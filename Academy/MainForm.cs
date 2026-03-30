@@ -41,23 +41,61 @@ namespace Academy
 		};
 		DataGridView[] tables;
 		DBTools.Connector connector;
-		public MainForm()
-		{
-			InitializeComponent();
-			tables = new DataGridView[] { dgvStudents, dgvGroups, dgvDirections, dgvDisciplines, dgvTeachers };
-			connector = new DBTools.Connector(ConfigurationManager.ConnectionStrings["PV_521_Import"].ConnectionString);
+		/// ////////////////////////////////////////////////////
 
-			//dgvDirections.DataSource = connector.Select("*", "Directions");
-			//toolStripStatusLabel.Text = $"Количество направлений обучения: {dgvDirections.Rows.Count - 1}";
-			//toolStripStatusLabel.Text = $"Количество направлений обучения: {connector.Scalar("SELECT COUNT(*) FROM Directions")}";
-			tabControl_SelectedIndexChanged(tabControl, null);
-		}
+		Dictionary<string, int> d_directions;
+		Dictionary<string, int> d_groups;
+			public MainForm()
+			{
+				InitializeComponent();
+				tables = new DataGridView[] { dgvStudents, dgvGroups, dgvDirections, dgvDisciplines, dgvTeachers };
+				connector = new DBTools.Connector(ConfigurationManager.ConnectionStrings["PV_521_Import"].ConnectionString);
+
+				//dgvDirections.DataSource = connector.Select("*", "Directions");
+				//toolStripStatusLabel.Text = $"Количество направлений обучения: {dgvDirections.Rows.Count - 1}";
+				//toolStripStatusLabel.Text = $"Количество направлений обучения: {connector.Scalar("SELECT COUNT(*) FROM Directions")}";
+				tabControl_SelectedIndexChanged(tabControl, null);
+
+				d_directions = connector.GetDictionary("Directions");
+				d_groups = connector.GetDictionary("Groups");
+
+				cbStudentsGroup.Items.AddRange(d_groups.Keys.ToArray());
+				cbGroupsDirection.Items.AddRange(d_directions.Keys.ToArray());
+				cbStudentsDirection.Items.AddRange(d_directions.Keys.ToArray());
+
+			}
 
 		private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			int i = tabControl.SelectedIndex;
 			tables[i].DataSource = connector.Select(queries[i].ToString());
 			toolStripStatusLabel.Text = $"{status_messages[i]}: {tables[i].RowCount - 1}";
+		}
+
+		private void cbGroupsDirection_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			dgvGroups.DataSource = connector.Select
+				(
+				queries[1].ToString() + 
+				$" AND direction={d_directions[cbGroupsDirection.SelectedItem.ToString()]}"
+				);
+			toolStripStatusLabel.Text = $"{status_messages[1]}: {dgvGroups.RowCount - 1}";
+		}
+
+		private void cbStudentsGroup_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void cbStudentsDirection_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+			dgvStudents.DataSource = connector.Select
+				(
+					queries[0].ToString()+
+					$" AND direction={d_directions[cbStudentsDirection.SelectedItem.ToString()]}"
+				);
+			toolStripStatusLabel.Text = $"{status_messages[0]}: {dgvStudents.RowCount - 1}";
 		}
 	}
 }
