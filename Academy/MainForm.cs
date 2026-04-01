@@ -45,6 +45,8 @@ namespace Academy
 
 		Dictionary<string, int> d_directions;
 		Dictionary<string, int> d_groups;
+
+		StudentForm studentForm;
 			public MainForm()
 			{
 				InitializeComponent();
@@ -62,6 +64,7 @@ namespace Academy
 				cbStudentsGroup.Items.AddRange(d_groups.Keys.ToArray());
 				cbGroupsDirection.Items.AddRange(d_directions.Keys.ToArray());
 				cbStudentsDirection.Items.AddRange(d_directions.Keys.ToArray());
+				
 
 			}
 
@@ -82,20 +85,28 @@ namespace Academy
 			toolStripStatusLabel.Text = $"{status_messages[1]}: {dgvGroups.RowCount - 1}";
 		}
 
-		private void cbStudentsGroup_SelectedIndexChanged(object sender, EventArgs e)
-		{
-
-		}
-
+		
 		private void cbStudentsDirection_SelectedIndexChanged(object sender, EventArgs e)
 		{
-
+			d_groups = connector.GetDictionary
+				(
+				"Groups",
+				$"direction={d_directions[cbStudentsDirection.SelectedItem.ToString()]}"
+				);
+			cbStudentsGroup.Items.Clear();
+			cbStudentsGroup.Items.AddRange (d_groups.Keys.ToArray());
 			dgvStudents.DataSource = connector.Select
 				(
 					queries[0].ToString()+
 					$" AND direction={d_directions[cbStudentsDirection.SelectedItem.ToString()]}"
 				);
 			toolStripStatusLabel.Text = $"{status_messages[0]}: {dgvStudents.RowCount - 1}";
+		}
+
+		private void buttonAddStudent_Click(object sender, EventArgs e)
+		{
+			studentForm = new StudentForm();
+			studentForm.ShowDialog();
 		}
 	}
 }
