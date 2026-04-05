@@ -33,7 +33,7 @@
 			this.labelMiddleName = new System.Windows.Forms.Label();
 			this.labelBirthDate = new System.Windows.Forms.Label();
 			this.tbLastName = new System.Windows.Forms.TextBox();
-			this.c = new System.Windows.Forms.TextBox();
+			this.tbFirstName = new System.Windows.Forms.TextBox();
 			this.tbMiddleName = new System.Windows.Forms.TextBox();
 			this.dtpBirthDate = new System.Windows.Forms.DateTimePicker();
 			this.pbPhoto = new System.Windows.Forms.PictureBox();
@@ -98,16 +98,16 @@
 			this.tbLastName.Size = new System.Drawing.Size(228, 31);
 			this.tbLastName.TabIndex = 4;
 			// 
-			// c
+			// tbFirstName
 			// 
-			this.c.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-			this.c.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
-			this.c.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.c.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-			this.c.Location = new System.Drawing.Point(204, 54);
-			this.c.Name = "c";
-			this.c.Size = new System.Drawing.Size(228, 31);
-			this.c.TabIndex = 5;
+			this.tbFirstName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+			this.tbFirstName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
+			this.tbFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.tbFirstName.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+			this.tbFirstName.Location = new System.Drawing.Point(204, 54);
+			this.tbFirstName.Name = "tbFirstName";
+			this.tbFirstName.Size = new System.Drawing.Size(228, 31);
+			this.tbFirstName.TabIndex = 5;
 			// 
 			// tbMiddleName
 			// 
@@ -134,7 +134,7 @@
 			// 
 			this.pbPhoto.BackColor = System.Drawing.SystemColors.ControlDark;
 			this.pbPhoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.pbPhoto.Location = new System.Drawing.Point(438, 19);
+			this.pbPhoto.Location = new System.Drawing.Point(438, 12);
 			this.pbPhoto.Name = "pbPhoto";
 			this.pbPhoto.Size = new System.Drawing.Size(225, 217);
 			this.pbPhoto.TabIndex = 8;
@@ -159,7 +159,6 @@
 			this.tbEmail.Name = "tbEmail";
 			this.tbEmail.Size = new System.Drawing.Size(228, 31);
 			this.tbEmail.TabIndex = 10;
-			this.tbEmail.TextChanged += new System.EventHandler(this.tbEmail_TextChanged);
 			// 
 			// tbPhone
 			// 
@@ -190,7 +189,6 @@
 			this.labelPhone.Size = new System.Drawing.Size(80, 25);
 			this.labelPhone.TabIndex = 13;
 			this.labelPhone.Text = "Phone:";
-			this.labelPhone.Click += new System.EventHandler(this.labelPhone_Click);
 			// 
 			// buttonOk
 			// 
@@ -202,6 +200,7 @@
 			this.buttonOk.TabIndex = 14;
 			this.buttonOk.Text = "OK";
 			this.buttonOk.UseVisualStyleBackColor = true;
+			this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
 			// 
 			// buttonCancel
 			// 
@@ -229,7 +228,7 @@
 			this.Controls.Add(this.pbPhoto);
 			this.Controls.Add(this.dtpBirthDate);
 			this.Controls.Add(this.tbMiddleName);
-			this.Controls.Add(this.c);
+			this.Controls.Add(this.tbFirstName);
 			this.Controls.Add(this.tbLastName);
 			this.Controls.Add(this.labelBirthDate);
 			this.Controls.Add(this.labelMiddleName);
@@ -237,9 +236,11 @@
 			this.Controls.Add(this.labelLastName);
 			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.Name = "HumanForm";
 			this.ShowInTaskbar = false;
-			this.Text = "HumanForm";
+			this.Text = "`";
 			((System.ComponentModel.ISupportInitialize)(this.pbPhoto)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -252,17 +253,17 @@
 		private System.Windows.Forms.Label labelFirstName;
 		private System.Windows.Forms.Label labelMiddleName;
 		private System.Windows.Forms.Label labelBirthDate;
-		private System.Windows.Forms.TextBox tbLastName;
-		private System.Windows.Forms.TextBox c;
-		private System.Windows.Forms.TextBox tbMiddleName;
-		private System.Windows.Forms.DateTimePicker dtpBirthDate;
-		private System.Windows.Forms.PictureBox pbPhoto;
 		private System.Windows.Forms.Button buttonBrowse;
-		private System.Windows.Forms.TextBox tbEmail;
-		private System.Windows.Forms.TextBox tbPhone;
 		private System.Windows.Forms.Label labelEmail;
 		private System.Windows.Forms.Label labelPhone;
 		private System.Windows.Forms.Button buttonOk;
 		private System.Windows.Forms.Button buttonCancel;
+		protected System.Windows.Forms.TextBox tbLastName;
+		protected System.Windows.Forms.TextBox tbFirstName;
+		protected System.Windows.Forms.TextBox tbMiddleName;
+		protected System.Windows.Forms.DateTimePicker dtpBirthDate;
+		protected System.Windows.Forms.PictureBox pbPhoto;
+		protected System.Windows.Forms.TextBox tbEmail;
+		protected System.Windows.Forms.TextBox tbPhone;
 	}
 }
