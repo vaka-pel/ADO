@@ -240,7 +240,7 @@
 			this.MinimizeBox = false;
 			this.Name = "HumanForm";
 			this.ShowInTaskbar = false;
-			this.Text = "`";
+			this.Text = "HumanForm";
 			((System.ComponentModel.ISupportInitialize)(this.pbPhoto)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
