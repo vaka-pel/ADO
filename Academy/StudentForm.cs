@@ -41,17 +41,24 @@ namespace Academy
 			cbGroup.SelectedValue = student.group;
 		}
 				protected override void buttonOk_Click(object sender, EventArgs e)
-		{
-			base.buttonOk_Click(sender, e);
-			student = new Models.Student(human,Convert.ToInt32(cbGroup.SelectedValue));
-			DataBase.Connector.Insert("Students", $"{student.GetNames()}", $"{student.GetValues()}");
-			//DataBase.Connector.Insert
-			//(
-			//	"Students",
-			//	"Last_name,first_name,middle_name,birth_date,email,phone,[group]",
-			//	$"{tbLastName.Text},{tbFirstName.Text},{tbMiddleName.Text},{dtpBirthDate.Value.ToString("yyyy-MM-dd")},{tbEmail.Text},{tbPhone.Text},{cbGroup.SelectedValue}"
-			//);
-		}
+				{
+					base.buttonOk_Click(sender, e);
+
+
+					student = new Models.Student(human,Convert.ToInt32(cbGroup.SelectedValue));
+					//object id = (int)DataBase.Connector.Scalar($"SELECT stud_id FROM Students WHERE {student.GetCondition()}");
+					if (student.id == 0) DataBase.Connector.Insert("Students", $"{student.GetNames()}", $"{student.GetValues()}");
+					else DataBase.Connector.Update($"UPDATE Students SET {student.GetUpdateString()} WHERE stud_id={student.id}");
+					if (student.photo != null)
+				DataBase.Connector.UploadPhoto(student.SeriaLizePhoto(), (int)student.id, "photo", "Students");
+
+					//DataBase.Connector.Insert
+					//(
+					//	"Students",
+					//	"Last_name,first_name,middle_name,birth_date,email,phone,[group]",
+					//	$"{tbLastName.Text},{tbFirstName.Text},{tbMiddleName.Text},{dtpBirthDate.Value.ToString("yyyy-MM-dd")},{tbEmail.Text},{tbPhone.Text},{cbGroup.SelectedValue}"
+					//);
+				}
 
 	}
 }

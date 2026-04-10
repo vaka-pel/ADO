@@ -44,6 +44,8 @@
 			this.labelPhone = new System.Windows.Forms.Label();
 			this.buttonOk = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
+			this.labelID = new System.Windows.Forms.Label();
+			this.label1 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.pbPhoto)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -213,11 +215,31 @@
 			this.buttonCancel.Text = "Cancel";
 			this.buttonCancel.UseVisualStyleBackColor = true;
 			// 
+			// labelID
+			// 
+			this.labelID.AutoSize = true;
+			this.labelID.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.labelID.Location = new System.Drawing.Point(8, 341);
+			this.labelID.Name = "labelID";
+			this.labelID.Size = new System.Drawing.Size(0, 25);
+			this.labelID.TabIndex = 16;
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.label1.Location = new System.Drawing.Point(24, 341);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(0, 25);
+			this.label1.TabIndex = 17;
+			// 
 			// HumanForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(678, 392);
+			this.ClientSize = new System.Drawing.Size(678, 440);
+			this.Controls.Add(this.label1);
+			this.Controls.Add(this.labelID);
 			this.Controls.Add(this.buttonCancel);
 			this.Controls.Add(this.buttonOk);
 			this.Controls.Add(this.labelPhone);
@@ -265,5 +287,7 @@
 		protected System.Windows.Forms.PictureBox pbPhoto;
 		protected System.Windows.Forms.TextBox tbEmail;
 		protected System.Windows.Forms.TextBox tbPhone;
+		private System.Windows.Forms.Label labelID;
+		private System.Windows.Forms.Label label1;
 	}
 }
