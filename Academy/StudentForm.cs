@@ -47,11 +47,22 @@ namespace Academy
 
 
 					student = new Models.Student(human,Convert.ToInt32(cbGroup.SelectedValue));
-					//object id = (int)DataBase.Connector.Scalar($"SELECT stud_id FROM Students WHERE {student.GetCondition()}");
-					if (student.id == 0) DataBase.Connector.Insert("Students", $"{student.GetNames()}", $"{student.GetValues()}");
-					else DataBase.Connector.Update($"UPDATE Students SET {student.GetUpdateString()} WHERE stud_id={student.id}");
-					if (student.photo != null)
-				DataBase.Connector.UploadPhoto(student.SeriaLizePhoto(), (int)student.id, "photo", "Students");
+			//object id = (int)DataBase.Connector.Scalar($"SELECT stud_id FROM Students WHERE {student.GetCondition()}");
+			//if (student.id == 0) DataBase.Connector.Insert("Students", $"{student.GetNames()}", $"{student.GetValues()}");
+			if (student.id == 0) student.id = Convert.ToInt32(DataBase.Connector.Scalar
+				(
+					$"INSERT Students({student.GetNames()}) VALUES ({student.GetValues()});SELECT SCOPE_IDENTITY()")
+				);
+				else DataBase.Connector.Update($"UPDATE Students SET {student.GetUpdateString()} WHERE stud_id={student.id}");
+				if (student.photo != null)
+					{
+			//	if (student.id == 0)
+			//		student.id = (int)DataBase.Connector.Scalar
+			//			(
+			//				$"SELECT stud_id FROM Students WHERE {student.GetCondition()}"
+			//			);
+						DataBase.Connector.UploadPhoto(student.SeriaLizePhoto(), student.id, "photo", "Students");
+					}	
 
 					//DataBase.Connector.Insert
 					//(
