@@ -45,6 +45,9 @@
 			this.dgvDisciplines = new System.Windows.Forms.DataGridView();
 			this.tabPageTeachers = new System.Windows.Forms.TabPage();
 			this.dgvTeachers = new System.Windows.Forms.DataGridView();
+			this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+			this.cbTeachersDirection = new System.Windows.Forms.ComboBox();
+			this.buttonAddTeacher = new System.Windows.Forms.Button();
 			this.statusStrip.SuspendLayout();
 			this.tabControl.SuspendLayout();
 			this.tabPageStudents.SuspendLayout();
@@ -233,6 +236,8 @@
 			// 
 			// tabPageTeachers
 			// 
+			this.tabPageTeachers.Controls.Add(this.buttonAddTeacher);
+			this.tabPageTeachers.Controls.Add(this.cbTeachersDirection);
 			this.tabPageTeachers.Controls.Add(this.dgvTeachers);
 			this.tabPageTeachers.Location = new System.Drawing.Point(4, 22);
 			this.tabPageTeachers.Name = "tabPageTeachers";
@@ -249,10 +254,28 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.dgvTeachers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
 			this.dgvTeachers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgvTeachers.Location = new System.Drawing.Point(9, 15);
+			this.dgvTeachers.Location = new System.Drawing.Point(9, 33);
 			this.dgvTeachers.Name = "dgvTeachers";
-			this.dgvTeachers.Size = new System.Drawing.Size(775, 372);
+			this.dgvTeachers.Size = new System.Drawing.Size(775, 354);
 			this.dgvTeachers.TabIndex = 1;
+			// 
+			// cbTeachersDirection
+			// 
+			this.cbTeachersDirection.FormattingEnabled = true;
+			this.cbTeachersDirection.Location = new System.Drawing.Point(249, 4);
+			this.cbTeachersDirection.Name = "cbTeachersDirection";
+			this.cbTeachersDirection.Size = new System.Drawing.Size(277, 21);
+			this.cbTeachersDirection.TabIndex = 3;
+			// 
+			// buttonAddTeacher
+			// 
+			this.buttonAddTeacher.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.buttonAddTeacher.Location = new System.Drawing.Point(640, 4);
+			this.buttonAddTeacher.Name = "buttonAddTeacher";
+			this.buttonAddTeacher.Size = new System.Drawing.Size(97, 23);
+			this.buttonAddTeacher.TabIndex = 4;
+			this.buttonAddTeacher.Text = "Добавить";
+			this.buttonAddTeacher.UseVisualStyleBackColor = true;
 			// 
 			// MainForm
 			// 
@@ -300,6 +323,9 @@
 		private System.Windows.Forms.ComboBox cbStudentsDirection;
 		private System.Windows.Forms.ComboBox cbStudentsGroup;
 		private System.Windows.Forms.Button buttonAddStudent;
+		private System.Windows.Forms.Button buttonAddTeacher;
+		private System.Windows.Forms.ComboBox cbTeachersDirection;
+		private System.Windows.Forms.ColorDialog colorDialog1;
 	}
 }
 
