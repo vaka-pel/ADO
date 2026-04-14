@@ -107,9 +107,9 @@ namespace DBTools
 			{
 				// @ - RAW string - RAW - строка игнорирует переносы
 				string cmd = $@"SELECT INFORMATION_SCHEMA.KEY_COLUMN_USAGE.COLUMN_NAME
-FROM    INFORMATION_SCHEMA.KEY_COLUMN_USAGE
-WHERE   TABLE_NAME = N'{table}'
-AND CONSTRAINT_NAME LIKE N'PK_%'";
+				FROM    INFORMATION_SCHEMA.KEY_COLUMN_USAGE
+				WHERE   TABLE_NAME = N'{table}'
+				AND CONSTRAINT_NAME LIKE N'PK_%'";
 
 				return (string)Scalar(cmd);
 			}

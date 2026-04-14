@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Academy.Models;
 
 namespace Academy
 {
@@ -14,6 +15,16 @@ namespace Academy
 		public TeacherForm()
 		{
 			InitializeComponent();
+		}
+
+		public TeacherForm(int id) : this()
+		{
+			DataTable data = DataBase.Connector.Select("*", "Teachers", $"teacher_id={id}");
+			teacher = new Models.Teacher(data.Rows[0].ItemArray);
+			human = teacher;
+			Extract();
+			//cbGroup.SelectedValue = student.group;
+			pbPhoto.Image = DataBase.Connector.DownLoadPhoto("Teachers", "photo", teacher.id);
 		}
 		protected override void buttonOk_Click(object sender, EventArgs e)
 		{
