@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Academy.Models;
 
 namespace Academy
 {
@@ -14,6 +15,16 @@ namespace Academy
 		public TeacherForm()
 		{
 			InitializeComponent();
+		}
+		public TeacherForm(int id) : this()
+		{
+			DataTable table = DataBase.Connector.Select($"SELECT * FROM Teachers WHERE teacher_id={id}");
+			teacher = new Models.Teacher(table.Rows[0].ItemArray);
+			human = teacher;
+			Extract();
+			this.dtpWorkSince.Value = Convert.ToDateTime(teacher.work_since);
+			this.tbRate.Text = teacher.rate.ToString();
+			pbPhoto.Image = DataBase.Connector.DownLoadPhoto("Teachers", "photo", id);
 		}
 		protected override void buttonOk_Click(object sender, EventArgs e)
 		{
