@@ -23,7 +23,8 @@ namespace Academy
 			teacher = new Models.Teacher(data.Rows[0].ItemArray);
 			human = teacher;
 			Extract();
-			//cbGroup.SelectedValue = student.group;
+			dtpWorkSince.Value = DateTime.Parse(teacher.work_since);
+			tbRate.Text = teacher.rate.ToString();
 			pbPhoto.Image = DataBase.Connector.DownLoadPhoto("Teachers", "photo", teacher.id);
 		}
 		protected override void buttonOk_Click(object sender, EventArgs e)
